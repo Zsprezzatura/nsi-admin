@@ -8,8 +8,8 @@ var changeUrl = { address:'data.xinxueshuo.cn:80/nsi-0.9',imgAddress:"data.xinxu
 
 //权限管理 01-管理人员库 02-管理数据库 03-管理新学说课堂 04-超级管理员
 var rightsControl ={
-    "right01":['yanjilin@xinxueshuo.cn','info@xinxueshuo.cn','zhangwen@xinxueshuo.cn','test08','test0802'],
+    "right01":['yanjilin@xinxueshuo.cn','info@xinxueshuo.cn','zhangwen@xinxueshuo.cn','test08','test0802','zhangziyu@xinxueshuo.cn','zhangchao@xinxueshuo.cn','taozui@xinxueshuo.cn'],
     "right02":[],
     "right03":['zhangwen@xinxueshuo.cn','test0802'],
-    "right04":['谢鹏飞','吴越','程静','chengjing@xinxueshuo.cn','wuyue@xinxueshuo.cn','xiepengfei@xinxueshuo.cn','renbinbin@xinxueshuo.cn','liyan@xinxueshuo.cn']
+    "right04":['谢鹏飞','吴越','程静','chengjing@xinxueshuo.cn','wuyue@xinxueshuo.cn','xiepengfei@xinxueshuo.cn','renbinbin@xinxueshuo.cn','liyan@xinxueshuo.cn','zhangshanlin@xinxueshuo.cn','dongyankun@xinxueshuo.cn']
 }
