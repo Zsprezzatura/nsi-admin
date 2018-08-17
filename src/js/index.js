@@ -23,6 +23,7 @@ function getCookie() {
                 console.log(msg.verifyResult);
                 if(msg.verifyResult<0){
                     layui.use('layer',function () {
+                            window.location.href="./login.html"
                             var layer = layui.layer;
                             layer.alert('当前用户未登录，无法访问该页面',{
                                 skin: 'layui-layer-molv' //样式类名

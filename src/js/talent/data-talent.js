@@ -4,35 +4,35 @@ layui.use(['table','form'], function(){
 
     table.render({
         elem: '#talentShow'
-        ,url:'http://'+changeUrl.address+'/talent_api?whereFrom=Admin_Search&talent_searchKey='
+        ,url:'http://'+changeUrl.address+'/manager/talent/list.do?talent_searchKey='
         ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         ,page:true
         ,height:'full-150'
-        ,request: { pageName: 'pageNum' ,limitName: 'OnePageNum'}
-        ,limit:30
+        ,request: { pageName: 'pageNum' ,limitName: 'pageSize'}
+        ,limit:10
         ,id: 'renderReload'
         ,cols: [[
              {type:'checkbox',fixed:'left'}
-            ,{field:'Name', width:140, title: '姓名',align:'center',fixed:'left'}
-            ,{field:'Sex', width:80,title: '性别', sort:true,align:'center'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-            ,{field:'Phone',width:180, title: '电话',align:'center'}
-            ,{field:'Mail',width:180, title: '邮箱',align:'center'}
-            ,{field:'Education', width:120, title: '最高学历',align:'center'}
-            ,{field:'Major' ,width:140,title: '专业', align:'center'}
-            ,{field:'NowWorkplace', width:180, title: '现工作地点', align:'center'}
-            ,{field:'WorkYear', width:137, title: '工作经验（年）', align:'center'}
-            ,{field:'ExpectWorkPlace', width:150, title: '期望工作地点', align:'center'}
-            ,{field:'ExpectWorkPosition', width:150, title: '期望工作职位', align:'center'}
-            ,{field:'ExpectSalary', width:140, title: '期望年薪', sort: true,align:'center'}
-            ,{field:'Other', width:150, title: '其他要求',align:'center'}
-            ,{field:'WorkExperience', width:200, title: '工作经历', sort: true,align:'center'}
-            ,{field:'EducationBackground', width:180, title: '教育背景', align:'center'}
-            ,{field:'TrainingBackground', width:180, title: '培训经历', align:'center'}
-            ,{field:'Public', width:120, title: '是否公开简历', sort: true,align:'center'}
-            ,{field:'Public', width:120, title: '是否上传附件', sort: true,align:'center'}
-            ,{field:'UserMail', width:180, title: '提交人邮箱', align:'center'}
-            ,{field:'Load_time', width:160, title: '提交时间', sort: true, align:'center'}
-            ,{field:'Id', width:80, title: 'ID', sort: true,align:'center'}
+            ,{field:'name', width:140, title: '姓名',align:'center',fixed:'left'}
+            ,{field:'sex', width:80,title: '性别', sort:true,align:'center'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            ,{field:'phone',width:180, title: '电话',align:'center'}
+            ,{field:'mail',width:180, title: '邮箱',align:'center'}
+            ,{field:'education', width:120, title: '最高学历',align:'center'}
+            ,{field:'major' ,width:140,title: '专业', align:'center'}
+            ,{field:'nowWorkplace', width:180, title: '现工作地点', align:'center'}
+            ,{field:'workYear', width:137, title: '工作经验（年）', align:'center'}
+            ,{field:'expectWorkPlace', width:150, title: '期望工作地点', align:'center'}
+            ,{field:'expectWorkPosition', width:150, title: '期望工作职位', align:'center'}
+            ,{field:'expectSalary', width:140, title: '期望年薪', sort: true,align:'center'}
+            ,{field:'other', width:150, title: '其他要求',align:'center'}
+            ,{field:'workExperience', width:200, title: '工作经历', sort: true,align:'center'}
+            ,{field:'educationBackground', width:180, title: '教育背景', align:'center'}
+            ,{field:'trainingBackground', width:180, title: '培训经历', align:'center'}
+            ,{field:'public', width:120, title: '是否公开简历', sort: true,align:'center'}
+            ,{field:'public', width:120, title: '是否上传附件', sort: true,align:'center'}
+            ,{field:'userMail', width:180, title: '提交人邮箱', align:'center'}
+            ,{field:'load_time', width:160, title: '提交时间', sort: true, align:'center'}
+            ,{field:'id', width:80, title: 'ID', sort: true,align:'center'}
             ,{fixed: 'right',title:'操作', width:120, align:'center', toolbar: '#barTalent'} //这里的toolbar值是模板元素的选择器
         ]]
     });

@@ -178,6 +178,7 @@
                         dataType : "jsonp",//数据类型为jsonp  
                         jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
                         success : function(msg){
+                            debugger
                             console.log(msg);
                             if(msg.member_sign > 0){
                                 $.cookie('usertitle', msg.member_sign , { expires: 1, path: '/' });
