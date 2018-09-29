@@ -77,6 +77,39 @@ layui.use(['form','laydate','layer'],function () {
         })
         return false;
     })
+    function panduanAjax(type1,domid){
+        if($('#'+domid+'').val()==''){
+            return
+        }
+        $.ajax({
+            type: "post",
+            data:{
+                str:$('#'+domid+'').val(),
+                type:type1
+            },
+            url: 'http://' + changeUrl.address + '/manager/people/check_valid.do',
+            success: function (msg) {
+                
+                $('.'+domid+'Str').html(msg.msg)
+            },
+            error: function () {
+                alert('网络繁忙，请稍后再试！');
+            }
+        });
+    }
+    $('#People_name').blur(function(){
+        
+        panduanAjax('username','People_name')
+        
+    })
+    $('#People_phone').blur(function(){
+        panduanAjax('phone','People_phone')
+        
+    })
+    $('#People_mail').blur(function(){
+        panduanAjax('email','People_mail')
+        
+    })
 })
 
 

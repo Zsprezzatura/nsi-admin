@@ -10,10 +10,10 @@
     editor1.customConfig.pasteFilterStyle = false
     editor3.customConfig.pasteFilterStyle = false
 
-    editor1.customConfig.uploadImgServer = 'http://data.xinxueshuo.cn:80/nsi-0.9/Admin_api?whereFrom=EditorUpImg' // 上传图片到服务器
-    editor2.customConfig.uploadImgServer = 'http://data.xinxueshuo.cn:80/nsi-0.9/Admin_api?whereFrom=EditorUpImg' // 上传图片到服务器
-    editor3.customConfig.uploadImgServer = 'http://data.xinxueshuo.cn:80/nsi-0.9/Admin_api?whereFrom=EditorUpImg' // 上传图片到服务器
-    editor4.customConfig.uploadImgServer = 'http://data.xinxueshuo.cn:80/nsi-0.9/Admin_api?whereFrom=EditorUpImg' // 上传图片到服务器
+    editor1.customConfig.uploadImgServer = 'http://data.xinxueshuo.cn:80/nsi-1.0/Admin_api?whereFrom=EditorUpImg' // 上传图片到服务器
+    editor2.customConfig.uploadImgServer = 'http://data.xinxueshuo.cn:80/nsi-1.0/Admin_api?whereFrom=EditorUpImg' // 上传图片到服务器
+    editor3.customConfig.uploadImgServer = 'http://data.xinxueshuo.cn:80/nsi-1.0/Admin_api?whereFrom=EditorUpImg' // 上传图片到服务器
+    editor4.customConfig.uploadImgServer = 'http://data.xinxueshuo.cn:80/nsi-1.0/Admin_api?whereFrom=EditorUpImg' // 上传图片到服务器
 
    editor1.customConfig.debug = true
    editor2.customConfig.debug = true

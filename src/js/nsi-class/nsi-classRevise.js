@@ -210,7 +210,7 @@ function submitImg(getData,fn) {
 
     //第三步，使用AJAX提交
     $.ajax({
-        url: 'http://data.xinxueshuo.cn:80/nsi-0.9/Admin_api?whereFrom=EditorUpImg',
+        url: 'http://data.xinxueshuo.cn:80/nsi-1.0/Admin_api?whereFrom=EditorUpImg',
         method: 'POST',
         processData: false, //  不会将 data 参数序列化字符串
         contentType: false, //  根据表单 input 提交的数据使用其默认的 contentType

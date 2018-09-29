@@ -103,9 +103,9 @@
         <label class="layui-form-label">运营状态</label>
         <div class="layui-input-inline">
             <select name="interest" lay-filter="OperationState" id="OperationState">
-                <option value="0" selected="">运营中</option>
-                <option value="1" >停办</option>
-                <option value="2">筹建</option>
+                <option value="运营中" selected="">运营中</option>
+                <option value="停办" >停办</option>
+                <option value="筹建">筹建</option>
             </select>
         </div>
     </div>
@@ -206,6 +206,9 @@
             <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('澳洲QCE；','Course')" value="澳洲QCE" />
             <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('澳洲WACE；','Course')" value="澳洲WACE" />
             <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('加拿大课程；','Course')" value="加拿大课程" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('双语课程；','Course')" value="双语课程" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('校本课程；','Course')" value="校本课程" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('ESL；','Course')" value="ESL" />
             <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('其他；','Course')" value="其他" />
         </div>
     </div>
@@ -616,6 +619,9 @@
                 <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('澳洲QCE；','Course-edit')" value="澳洲QCE" />
                 <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('澳洲WACE；','Course-edit')" value="澳洲WACE" />
                 <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('加拿大课程；','Course-edit')" value="加拿大课程" />
+                 <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('双语课程；','Course')" value="双语课程" />
+                <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('校本课程；','Course')" value="校本课程" />
+                <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('ESL；','Course')" value="ESL" />
                 <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('其他；','Course-edit')" value="其他" />
             </div>
         </div>
@@ -913,7 +919,7 @@
 <!--url:'http://192.168.191.4:8080/nsi-0.9/School_api?whereFrom=AdminSearch',-->
 <!--url:'http://data.xinxueshuo.cn:80/nsi-0.9/School_api?whereFrom=AdminSearch',-->
 <!--数据表格-->
-<table class="layui-table" lay-data="{ page:true,id:'idTest',height: 'full-150',limit: 30,limits:[10,20,30,40,50,60,70,80,90], where: {School_searchKey: '',type:0},url:'http://data.xinxueshuo.cn:80/nsi-0.9/School_api?whereFrom=AdminSearch',request: { pageName: 'pageNum' ,limitName: 'OnePageNum'}}" lay-filter="demo">
+<table class="layui-table" lay-data="{ page:true,id:'idTest',height: 'full-150',limit: 30,limits:[10,20,30,40,50,60,70,80,90], where: {School_searchKey: '',type:0},url:'http://data.xinxueshuo.cn:80/nsi-1.0/School_api?whereFrom=AdminSearch',request: { pageName: 'pageNum' ,limitName: 'OnePageNum'}}" lay-filter="demo">
     <thead class="tofix">
     <tr>
         <th lay-data="{type:'checkbox', fixed: 'left'}" rowspan="2"></th>
@@ -1018,6 +1024,31 @@
 <script src="./src/js/school/school.js?v=1.0.3"></script>
 
 
-
+<script>
+    $('#School_name').blur(function(){
+        if($('#School_name').val()==''){
+            return
+        }
+        $.ajax({
+            type: "get",
+            url: 'http://' + changeUrl.address + '/school/check_valid.do?schoolName='+$('#School_name').val(),
+            success: function (msg) {
+                if(msg.code===1){
+                    flag=layer.alert('学校名已存在',{
+                        skin: 'layui-layer-molv' //样式类名
+                        ,closeBtn: 0
+                        ,icon:4
+                    },function () {
+                        layer.close(flag)
+                         $('#School_name').val('')
+                    })
+                }
+            },
+            error: function () {
+                alert('网络繁忙，请稍后再试！');
+            }
+        });
+    })
+</script>
 </body>
 </html>

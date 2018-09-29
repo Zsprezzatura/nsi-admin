@@ -146,6 +146,52 @@ layui.use(['table','form'], function(){
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
     });
+    function panduanAjax(type1,domid){
+        if($('#'+domid+'').val()==''){
+            return
+        }
+        $.ajax({
+            type: "post",
+            data:{
+                str:$('#'+domid+'').val(),
+                type:type1
+            },
+            url: 'http://' + changeUrl.address + '/manager/people/check_valid.do',
+            success: function (msg) {
+                console.log(msg)
+                if(msg.code===1){
+                    flag=layer.alert(msg.msg,{
+                        skin: 'layui-layer-molv' //样式类名
+                        ,closeBtn: 0
+                        ,icon:4
+                    },function () {
+                        layer.close(flag)
+                         
+                    })
+                }
+            },
+            error: function () {
+                alert('网络繁忙，请稍后再试！');
+            }
+        });
+    }
+    $('#People_name').blur(function(){
+        alert(1)
+        panduanAjax('username','People_name')
+        
+    })
+    $('#People_phone').blur(function(){
+        panduanAjax('phone','People_phone')
+        
+    })
+    $('#People_mail').blur(function(){
+        panduanAjax('email','People_mail')
+        
+    })
+
+
+
+
 
     //添加回车事件
     $('#cardReload').keydown(function (e) {
