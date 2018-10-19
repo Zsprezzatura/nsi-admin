@@ -229,9 +229,11 @@ function setProvinceEdit() {
 
 //根据选中的省份获取对应的城市
 function setCityEdit(provinec) {
+    debugger
     var $city = $("#selCity-edit");
     var proCity, option, modelVal;
     //通过省份名称，获取省份对应城市的数组名
+    console.log(provinec)
     switch (provinec) {
         case "":
             proCity = empty;
@@ -341,6 +343,9 @@ function setCityEdit(provinec) {
         case "其他":
             proCity = qita;
             break;
+         default:
+            proCity = empty;
+            break;
     }
 
     //先清空之前绑定的值
@@ -433,14 +438,14 @@ layui.use('table', function(){
                     type: "get",
                     async: false,
                     data: {
-                        "Id":data.Id
+                        "schoolId":data.id
                     },//提交的参数
-                    url: 'http://' + changeUrl.address + '/School_api?whereFrom=AdminDelete',
+                    url: 'http://' + changeUrl.address + '/manager/school/delete.do',
                     contentType: 'application/json;charset=UTF-8',
                     dataType: "json",//数据类型为jsonp  
                     success: function (msg) {
                         console.log(msg)
-                        if(msg.msg == 1){
+                        if(msg.msg == '删除学校信息成功'){
                             layer.msg('删除成功')
                             obj.del();
                             layer.close(index);
@@ -513,65 +518,71 @@ layui.use('table', function(){
 
                  // 数据渲染
                  layui.use('form',function () {
+                        debugger
+                        console.log(msg)
                         var form=layui.form
                          form.render();
                          //数据赋值
-                          setProvinceEdit()  //先设置省份数据
+                         setProvinceEdit()  //先设置省份数据
                          // console.log(msg.Areas)
-                          setCityEdit(autoDeleteZero(msg.Areas)) //设置地区数据
-                         $('#School_name-edit').val(autoDeleteZero(msg.School_name)),
-                         $('#School_EnglishName-edit').val(autoDeleteZero(msg.School_EnglishName)),
-                         $('#School_properties-edit').val(autoDeleteZero(msg.School_properties)),
-                         $("#selProvince-edit option[value='" + autoDeleteZero(msg.Areas) + "']").attr("selected", true),
-                         $("#selCity-edit option[value='" + autoDeleteZero(msg.Areas02) + "']").attr("selected", true),
-                         $('#Areas03-edit').val(autoDeleteZero(msg.Areas03)),
-                         $('#Founded_time-edit').val(autoDeleteZero(msg.Founded_time)),
-                         $('#OperationState-edit').val(autoDeleteZero(msg.OperationState)),
-                         $('#School_system-edit').val(autoDeleteZero(msg.School_system)),
+                          setCityEdit(autoDeleteZero(msg.areas)) //设置地区数据      
+                         $('#School_name-edit').val(autoDeleteZero(msg.schoolName)),
+                         $('#School_EnglishName-edit').val(autoDeleteZero(msg.schoolEnglishname)),
+                         $('#School_properties-edit').val(autoDeleteZero(msg.schoolProperties)),
+                         $("#selProvince-edit option[value='" + autoDeleteZero(msg.areas) + "']").attr("selected", true),
+                         $("#selCity-edit option[value='" + autoDeleteZero(msg.areas02) + "']").attr("selected", true),
+                         $('#Areas03-edit').val(autoDeleteZero(msg.areas03)),
+                         $('#Founded_time-edit').val(autoDeleteZero(msg.foundedTime)),
+                         $('#OperationState-edit').val(autoDeleteZero(msg.operationstate)),
+                         $('#School_system-edit').val(autoDeleteZero(msg.schoolSystem)),
 
-                         $('#Tuition01-edit').val(autoDeleteZero(msg.Tuition01)),
-                         $('#Tuition02-edit').val(autoDeleteZero(msg.Tuition02)),
-                         $('#Tuition03-edit').val(autoDeleteZero(msg.Tuition03)),
-                         $('#Tuition04-edit').val(autoDeleteZero(msg.Tuition04)),
+                         $('#Tuition01-edit').val(autoDeleteZero(msg.tuition01)),
+                         $('#Tuition02-edit').val(autoDeleteZero(msg.tuition02)),
+                         $('#Tuition03-edit').val(autoDeleteZero(msg.tuition03)),
+                         $('#Tuition04-edit').val(autoDeleteZero(msg.tuition04)),
 
                          $('#TuitionHigh-edit').val(autoDeleteZero(msg.TuitionHigh)),
-                         $('#Website-edit').val(autoDeleteZero(msg.Website)),
-                         $('#Telephone-edit').val(autoDeleteZero(msg.Telephone)),
-                         $('#Inter_Course_Founded_time-edit').val(autoDeleteZero(msg.Inter_Course_Founded_time)),
-                         $('#Course-edit').val(autoDeleteZero(msg.Course)),
-                         $('#Authentication-edit').val(autoDeleteZero(msg.Authentication)),
-                         $('#Course_evaluation-edit').val(autoDeleteZero(msg.Course_evaluation)),
+                         $('#Website-edit').val(autoDeleteZero(msg.website)),
+                         $('#Telephone-edit').val(autoDeleteZero(msg.telephone)),
+                         $('#Inter_Course_Founded_time-edit').val(autoDeleteZero(msg.interCourseFoundedTime)),
+                         $('#Course-edit').val(autoDeleteZero(msg.course)),
+                         $('#Authentication-edit').val(autoDeleteZero(msg.authentication)),
+                         $('#Course_evaluation-edit').val(autoDeleteZero(msg.courseEvaluation)),
 
-                         $('#Student_Num01-edit').val(autoDeleteZero(msg.Student_Num01)),
-                         $('#Student_Num02-edit').val(autoDeleteZero(msg.Student_Num02)),
-                         $('#Student_Num03-edit').val(autoDeleteZero(msg.Student_Num03)),
-                         $('#Student_Num04-edit').val(autoDeleteZero(msg.Student_Num04)),
+                         $('#Student_Num01-edit').val(autoDeleteZero(msg.studentNum01)),
+                         $('#Student_Num02-edit').val(autoDeleteZero(msg.studentNum02)),
+                         $('#Student_Num03-edit').val(autoDeleteZero(msg.studentNum03)),
+                         $('#Student_Num04-edit').val(autoDeleteZero(msg.studentNum04)),
 
-                         $('#Student_Num_All-edit').val(autoDeleteZero(msg.Student_Num_All)),
-                         $('#Student_Capacity-edit').val(autoDeleteZero(msg.Student_Capacity)),
-                         $('#Graduated_Stu_Num-edit').val(autoDeleteZero(msg.Graduated_Stu_Num)),
-                         $('#Stu_Dominant_nationality-edit').val(autoDeleteZero(msg.Stu_Dominant_nationality)),
-                         $('#Stu_Year_Investment-edit').val(autoDeleteZero(msg.Stu_Year_Investment)),
-                         $('#Club_Num-edit').val(autoDeleteZero(msg.Club_Num)),
-                         $('#President_Country-edit').val(autoDeleteZero(msg.President_Country)),
-                         $('#Staff_Num-edit').val(autoDeleteZero(msg.Staff_Num)),
-                         $('#Teacher_Num-edit').val(autoDeleteZero(msg.Teacher_Num)),
-                         $('#Foreign_Teacher_num-edit').val(autoDeleteZero(msg.Foreign_Teacher_num)),
-                         $('#Teacher_Year_Investment-edit').val(autoDeleteZero(msg.Teacher_Year_Investment)),
-                         $('#Teacher_Retention-edit').val(autoDeleteZero(msg.Teacher_Retention)),
-                         $('#Teacher_Salary-edit').val(autoDeleteZero(msg.Teacher_Salary)),
-                         $('#Teacher_Stu_ratio-edit').val(autoDeleteZero(msg.Teacher_Stu_ratio)),
-                         $('#Covered_Area-edit').val(autoDeleteZero(msg.Covered_Area)),
-                         $('#Built_Area-edit').val(autoDeleteZero(msg.Built_Area)),
-                         $('#Hardware-edit').val(autoDeleteZero(msg.Hardware)),
-                         $('#Investment-edit').val(autoDeleteZero(msg.Investment)),
-                         $('#Remark-edit').val(autoDeleteZero(msg.Remark)),
-                         $('#Recent_Modifier-edit').val(autoDeleteZero(msg.Recent_Modifier)),
-                         $('#Load_People-edit').val(autoDeleteZero(msg.Load_People)),
-                         $('#Load_Time-edit').val(autoDeleteZero(msg.Load_Time)),
-                         $('#VerifySign-edit').val(autoDeleteZero(msg.VerifySign)),
+                         $('#Student_Num_All-edit').val(autoDeleteZero(msg.studentNumAll)),
+                         $('#Student_Capacity-edit').val(autoDeleteZero(msg.studentCapacity)),
+                         $('#Graduated_Stu_Num-edit').val(autoDeleteZero(msg.graduatedStuNum)),
+                         $('#Stu_Dominant_nationality-edit').val(autoDeleteZero(msg.stuDominantNationality)),
+                         $('#Stu_Year_Investment-edit').val(autoDeleteZero(msg.stuYearInvestment)),
+                         $('#Club_Num-edit').val(autoDeleteZero(msg.clubNum)),
+                         $('#President_Country-edit').val(autoDeleteZero(msg.presidentCountry)),
+                         $('#Staff_Num-edit').val(autoDeleteZero(msg.staffNum)),
+                         $('#Teacher_Num-edit').val(autoDeleteZero(msg.teacherNum)),
+                         $('#Foreign_Teacher_num-edit').val(autoDeleteZero(msg.foreignTeacherNum)),
+                         $('#Teacher_Year_Investment-edit').val(autoDeleteZero(msg.teacherYearInvestment)),
+                         $('#Teacher_Retention-edit').val(autoDeleteZero(msg.teacherRetention)),
+                         $('#Teacher_Salary-edit').val(autoDeleteZero(msg.teacherSalary)),
+                         $('#Teacher_Stu_ratio-edit').val(autoDeleteZero(msg.teacherStuRatio)),
+                         $('#Covered_Area-edit').val(autoDeleteZero(msg.coveredArea)),
+                         $('#Built_Area-edit').val(autoDeleteZero(msg.builtArea)),
+                         $('#Hardware-edit').val(autoDeleteZero(msg.hardware)),
+                         $('#Investment-edit').val(autoDeleteZero(msg.investment)),
+                         $('#Remark-edit').val(autoDeleteZero(msg.remark)),
+                         $('#Recent_Modifier-edit').val(autoDeleteZero(msg.recentModifier)),
+                         $('#Load_People-edit').val(autoDeleteZero(msg.loadPeople)),
+                         $('#Load_Time-edit').val(autoDeleteZero(msg.loadTime)),
 
-                         $('#alter_old_School_id-edit').val(msg.Id)
+                         $('#certificate_authority-edit').val(autoDeleteZero(msg.certificateAuthority)),
+                         $('#student_evaluation-edit').val(autoDeleteZero(msg.studentEvaluation)),
+                         $('#third_organizations-edit').val(autoDeleteZero(msg.thirdOrganizations)),
+                         $('#course_authority-edit').val(autoDeleteZero(msg.courseAuthority)),
+
+                         $('#alter_old_School_id-edit').val(msg.id)
 
                          form.render();
                          //监听一级菜单选中
@@ -584,72 +595,72 @@ layui.use('table', function(){
 
                          form.on('submit(school-revise)', function(res) {
                              var insertData = {
-                                 'School_name': autoAddZero($('#School_name-edit').val()),
-                                 'School_EnglishName': autoAddZero($('#School_EnglishName-edit').val()),
-                                 'School_properties': autoAddZero($('#School_properties-edit').val()),
-                                 'Areas': autoAddZero($('#selProvince-edit').val()),
-                                 'Areas02': autoAddZero($('#selCity-edit').val()),
-                                 'Areas03': autoAddZero($('#Areas03-edit').val()),
-                                 'Founded_time': autoAddZero($('#Founded_time-edit').val()),
-                                 'OperationState': autoAddZero($('#OperationState-edit').val()),
-                                 'School_system': autoAddZero($('#School_system-edit').val()),
-                                 'TuitionHigh': autoAddZero($('#TuitionHigh-edit').val()),
+                                 'schoolName': autoAddZero($('#School_name-edit').val()),
+                                 'schoolEnglishname': autoAddZero($('#School_EnglishName-edit').val()),
+                                 'schoolProperties': autoAddZero($('#School_properties-edit').val()),
+                                 'areas': autoAddZero($('#selProvince-edit').val()),
+                                 'areas02': autoAddZero($('#selCity-edit').val()),
+                                 'areas03': autoAddZero($('#Areas03-edit').val()),
+                                 'foundedTime': autoAddZero($('#Founded_time-edit').val()),
+                                 'operationstate': autoAddZero($('#OperationState-edit').val()),
+                                 'schoolSystem': autoAddZero($('#School_system-edit').val()),
+                                 'tuitionhigh': autoAddZero($('#TuitionHigh-edit').val()),
 
-                                 'Tuition01': autoAddZero($('#Tuition01-edit').val()),
-                                 'Tuition02': autoAddZero($('#Tuition02-edit').val()),
-                                 'Tuition03': autoAddZero($('#Tuition03-edit').val()),
-                                 'Tuition04': autoAddZero($('#Tuition04-edit').val()),
+                                 'tuition01': autoAddZero($('#Tuition01-edit').val()),
+                                 'tuition02': autoAddZero($('#Tuition02-edit').val()),
+                                 'tuition03': autoAddZero($('#Tuition03-edit').val()),
+                                 'tuition04': autoAddZero($('#Tuition04-edit').val()),
 
 
-                                 'Website': autoAddZero($('#Website-edit').val()),
-                                 'Telephone': autoAddZero($('#Telephone-edit').val()),
-                                 'Inter_Course_Founded_time': autoAddZero($('#Inter_Course_Founded_time-edit').val()),
-                                 'Course': autoAddZero($('#Course-edit').val()),
-                                 'Authentication': autoAddZero($('#Authentication-edit').val()),
-                                 'Course_evaluation': autoAddZero($('#Course_evaluation-edit').val()),
-                                 'Student_Num_All': autoAddZero($('#Student_Num_All-edit').val()),
+                                 'website': autoAddZero($('#Website-edit').val()),
+                                 'telephone': autoAddZero($('#Telephone-edit').val()),
+                                 'interCourseFoundedTime': autoAddZero($('#Inter_Course_Founded_time-edit').val()),
+                                 'course': autoAddZero($('#Course-edit').val()),
+                                 'authentication': autoAddZero($('#Authentication-edit').val()),
+                                 'courseEvaluation': autoAddZero($('#Course_evaluation-edit').val()),
+                                 'studentNumAll': autoAddZero($('#Student_Num_All-edit').val()),
 
-                                 'Student_Num01': autoAddZero($('#Student_Num01-edit').val()),
-                                 'Student_Num02': autoAddZero($('#Student_Num02-edit').val()),
-                                 'Student_Num03': autoAddZero($('#Student_Num03-edit').val()),
-                                 'Student_Num04': autoAddZero($('#Student_Num04-edit').val()),
+                                 'studentNum01': autoAddZero($('#Student_Num01-edit').val()),
+                                 'studentNum02': autoAddZero($('#Student_Num02-edit').val()),
+                                 'studentNum03': autoAddZero($('#Student_Num03-edit').val()),
+                                 'studentNum04': autoAddZero($('#Student_Num04-edit').val()),
 
-                                 'Student_Capacity': autoAddZero($('#Student_Capacity-edit').val()),
-                                 'Graduated_Stu_Num': autoAddZero($('#Graduated_Stu_Num-edit').val()),
-                                 'Stu_Dominant_nationality': autoAddZero($('#Stu_Dominant_nationality-edit').val()),
-                                 'Stu_Year_Investment': autoAddZero($('#Stu_Year_Investment-edit').val()),
-                                 'Club_Num': autoAddZero($('#Club_Num-edit').val()),
-                                 'President_Country': autoAddZero($('#President_Country-edit').val()),
-                                 'Staff_Num': autoAddZero($('#Staff_Num-edit').val()),
-                                 'Teacher_Num': autoAddZero($('#Teacher_Num-edit').val()),
-                                 'Foreign_Teacher_num': autoAddZero($('#Foreign_Teacher_num-edit').val()),
-                                 'Teacher_Year_Investment': autoAddZero($('#Teacher_Year_Investment-edit').val()),
-                                 'Teacher_Retention': autoAddZero($('#Teacher_Retention-edit').val()),
-                                 'Teacher_Salary': autoAddZero($('#Teacher_Salary-edit').val()),
-                                 'Teacher_Stu_ratio': autoAddZero($('#Teacher_Stu_ratio-edit').val()),
-                                 'Covered_Area': autoAddZero($('#Covered_Area-edit').val()),
-                                 'Built_Area': autoAddZero($('#Built_Area-edit').val()),
-                                 'Hardware': autoAddZero($('#Hardware-edit').val()),
-                                 'Investment': autoAddZero($('#Investment-edit').val()),
-                                 'Remark': autoAddZero($('#Remark-edit').val()),
+                                 'studentCapacity': autoAddZero($('#Student_Capacity-edit').val()),
+                                 'graduatedStuNum': autoAddZero($('#Graduated_Stu_Num-edit').val()),
+                                 'stuDominantNationality': autoAddZero($('#Stu_Dominant_nationality-edit').val()),
+                                 'stuYearInvestment': autoAddZero($('#Stu_Year_Investment-edit').val()),
+                                 'clubNum': autoAddZero($('#Club_Num-edit').val()),
+                                 'presidentCountry': autoAddZero($('#President_Country-edit').val()),
+                                 'staffNum': autoAddZero($('#Staff_Num-edit').val()),
+                                 'teacherNum': autoAddZero($('#Teacher_Num-edit').val()),
+                                 'foreignTeacherNum': autoAddZero($('#Foreign_Teacher_num-edit').val()),
+                                 'teacherYearInvestment': autoAddZero($('#Teacher_Year_Investment-edit').val()),
+                                 'teacherRetention': autoAddZero($('#Teacher_Retention-edit').val()),
+                                 'teacherSalary': autoAddZero($('#Teacher_Salary-edit').val()),
+                                 'teacherStuRatio': autoAddZero($('#Teacher_Stu_ratio-edit').val()),
+                                 'coveredArea': autoAddZero($('#Covered_Area-edit').val()),
+                                 'builtArea': autoAddZero($('#Built_Area-edit').val()),
+                                 'hardware': autoAddZero($('#Hardware-edit').val()),
+                                 'investment': autoAddZero($('#Investment-edit').val()),
+                                 'remark': autoAddZero($('#Remark-edit').val()),
 
-                                 "Load_People": $.cookie('username'),
-                                 "member_sign": $.cookie('usertitle'),
-
-                                 "alter_old_School_id": msg.Id
+                                 "loadPeople": $.cookie('username'),
+                                 "certificateAuthority": autoAddZero($('#certificate_authority-edit').val()),
+                                 "studentEvaluation": autoAddZero($('#student_evaluation-edit').val()),
+                                 "thirdOrganizations": autoAddZero($('#third_organizations-edit').val()),
+                                 "courseAuthority": autoAddZero($('#course_authority-edit').val()),
+                                 "id": msg.id
 
                              }
                              $.ajax({
-                                 type: "get",
+                                 type: "post",
                                  async: false,
                                  traditional: true,
                                  data: insertData, //提交的参数
-                                 url: 'http://' + changeUrl.address + '/School_api?whereFrom=alter',
-                                 dataType: "jsonp", //数据类型为jsonp  
-                                 jsonp: "Callback", //服务端用于接收callback调用的function名的参数  
+                                 url: 'http://' + changeUrl.address + '/manager/school/modify_school.do',
                                  success: function(msg) {
                                      console.log(msg)
-                                     if (msg.msg == 1) {
+                                     if (msg.msg == '修改学校信息成功') {
                                          layer.alert('修改成功',function () {
                                              window.location.reload()
                                          })
@@ -676,24 +687,25 @@ layui.use('table', function(){
             // console.log(initData)
             if(initData == '[]'){
                 layer.alert('请先选择数据',{icon:5})
-            }else{
+            }else{         
                 layer.confirm('确定要导出数据吗？',{
                     icon: 3,
                     btn: ['确定','取消'], //按钮
                     title:'系统提示'
                 }, function(){
                     layer.alert('导出成功', {icon: 6 ,title:'系统提示'});
-                    var newData =initData.replace(/School_name/g,"学校中文名").replace(/School_EnglishName/g,"学校英文名").replace(/School_properties/g,"类型")
-                        .replace(/Areas/g,"省").replace(/省02/g,"市").replace(/省03/g,"详细地址").replace(/Founded_time/g,"成立时间").replace(/OperationState/g,"运营状态")
-                        .replace(/School_system/g,"学制").replace(/Tuition01/g,"幼儿园学费").replace(/Tuition02/g,"小学学费").replace(/Tuition03/g,"初中学费").replace(/Tuition04/g,"高中学费")
-                        .replace(/Website/g,"官网").replace(/Telephone/g,"电话").replace(/Inter_Course_成立时间/g,"国际课程认证时间")
-                        .replace(/Course/g,"国际课程").replace(/Authentication/g,"认证").replace(/Course_evaluation/g,"外部考试与评估").replace(/Student_Num_All/g,"总在校生（国际部）")
-                        .replace(/Student_Num01/g,"幼儿园学生数").replace(/Student_Num02/g,"小学学生数").replace(/Student_Num03/g,"初中学生数").replace(/Student_Num04/g,"高中学生数")
-                        .replace(/Student_Capacity/g,"总容量（国际部").replace(/Graduated_Stu_Num/g,"毕业班人数（国际部）").replace(/Stu_Dominant_nationality/g,"学生主要国籍")
-                        .replace(/Stu_Year_Investment/g,"生均年投入").replace(/Club_Num/g,"俱乐部数量").replace(/Staff_Num/g,"总员工数量").replace(/President_Country/g,"校长/国际部主任国籍").replace(/权限不足总员工数量/g,"校长/国际部主任国籍")
-                        .replace(/Teacher_Num/g,"总教师数量").replace(/Foreign_Teacher_num/g,"外籍教师数量").replace(/Teacher_Year_Investment/g,"师均年培训投入").replace(/Teacher_Retention/g,"教师流失率")
-                        .replace(/Teacher_Salary/g,"教师薪酬（三年经验）").replace(/Teacher_Stu_ratio/g,"师生比").replace(/Covered_Area/g,"占地面积（亩）").replace(/Built_Area/g,"建筑面积")
-                        .replace(/Hardware/g,"硬件设施").replace(/Investment/g,"投资信息").replace(/Remark/g,"备注").replace(/Load_People/g,"提交人").replace(/Load_Time/g,"提交时间")
+                    var newData =initData.replace(/schoolName/g,"学校中文名").replace(/schoolEnglishname/g,"学校英文名").replace(/schoolProperties/g,"类型")
+                        .replace(/areas/g,"省").replace(/省02/g,"市").replace(/省03/g,"详细地址").replace(/foundedTime/g,"成立时间").replace(/operationstate/g,"运营状态")
+                        .replace(/schoolSystem/g,"学制").replace(/tuition01/g,"幼儿园学费").replace(/tuition02/g,"小学学费").replace(/tuition03/g,"初中学费").replace(/tuition04/g,"高中学费")
+                        .replace(/website/g,"官网").replace(/telephone/g,"电话").replace(/interCourseFoundedTime/g,"国际课程认证时间")
+                        .replace(/course/g,"国际课程").replace(/authentication/g,"认证").replace(/courseEvaluation/g,"外部考试与评估").replace(/studentNumAll/g,"总在校生（国际部）")
+                        .replace(/studentNum01/g,"幼儿园学生数").replace(/studentNum02/g,"小学学生数").replace(/studentNum03/g,"初中学生数").replace(/studentNum04/g,"高中学生数")
+                        .replace(/studentCapacity/g,"总容量（国际部").replace(/graduatedStuNum/g,"毕业班人数（国际部）").replace(/stuDominantNationality/g,"学生主要国籍")
+                        .replace(/stuYearInvestment/g,"生均年投入").replace(/clubNum/g,"俱乐部数量").replace(/staffNum/g,"总员工数量").replace(/presidentCountry/g,"校长/国际部主任国籍").replace(/presidentCountry/g,"校长/国际部主任国籍")
+                        .replace(/teacherNum/g,"总教师数量").replace(/foreignTeacherNum/g,"外籍教师数量").replace(/teacherYearInvestment/g,"师均年培训投入").replace(/teacherRetention/g,"教师流失率")
+                        .replace(/teacherSalary/g,"教师薪酬（三年经验）").replace(/teacherStuRatio/g,"师生比").replace(/coveredArea/g,"占地面积（亩）").replace(/builtArea/g,"建筑面积")
+                        .replace(/hardware/g,"硬件设施").replace(/investment/g,"投资信息").replace(/remark/g,"备注").replace(/loadPeople/g,"提交人").replace(/loadTime/g,"提交时间")
+                        .replace(/certificateAuthority/g,"主流学术保障认证机构").replace(/studentEvaluation/g,"学生评测").replace(/thirdOrganizations/g,"第三方组织机构").replace(/loadPeople/g,"课程")
                     console.log(JSON.parse(newData))
                     downloadExl(JSON.parse(newData))
                 }, function(){
@@ -721,13 +733,13 @@ layui.use('table', function(){
             console.log(schoolSearchType.val())
             //执行重载
             table.reload('idTest', {
-                url: 'http://' + changeUrl.address + '/School_api?whereFrom=AdminSearch',
+                url: 'http://' + changeUrl.address + '/manager/school/list.do',
                 page: {
                     curr: 1 //重新从第 1 页开始
                 }
                 ,where: {
                     type:schoolSearchType.val(),
-                    School_searchKey: schoolSearchValue.val(),
+                    searchKey: schoolSearchValue.val(),
                 }//需要传递的参数
 
             });
@@ -747,13 +759,13 @@ layui.use('table', function(){
         if(curKey == 13){
             //执行重载
             table.reload('idTest', {
-                url: 'http://' + changeUrl.address + '/School_api?whereFrom=AdminSearch',
+                url: 'http://' + changeUrl.address + '/manager/school/list.do',
                 page: {
                     curr: 1 //重新从第 1 页开始
                 }
                 ,where: {
                     type:schoolSearchType.val(),
-                    School_searchKey: schoolSearchValue.val(),
+                    searchKey: schoolSearchValue.val(),
                 }//需要传递的参数
             });
         }
@@ -787,68 +799,70 @@ layui.use('form',function () {
             //     title: '最终的提交信息'
             // })
           var insertData = {
-              'School_name': autoAddZero($('#School_name').val()),
-              'School_EnglishName': autoAddZero($('#School_EnglishName').val()),
-              'School_properties': autoAddZero($('#School_properties').val()),
-              'Areas': autoAddZero($('#selProvince').val()),
-              'Areas02': autoAddZero($('#selCity').val()),
-              'Areas03': autoAddZero($('#Areas03').val()),
-              'Founded_time': autoAddZero($('#Founded_time').val()),
-              'OperationState': autoAddZero($('#OperationState').val()),
-              'School_system': autoAddZero($('#School_system').val()),
+              'schoolName': autoAddZero($('#School_name').val()),
+              'schoolEnglishname': autoAddZero($('#School_EnglishName').val()),
+              'schoolProperties': autoAddZero($('#School_properties').val()),
+              'areas': autoAddZero($('#selProvince').val()),
+              'areas02': autoAddZero($('#selCity').val()),
+              'areas03': autoAddZero($('#Areas03').val()),
+              'foundedTime': autoAddZero($('#Founded_time').val()),
+              'operationstate': autoAddZero($('#OperationState').val()),
+              'schoolSystem': autoAddZero($('#School_system').val()),
 
-              'Tuition01': autoAddZero($('#Tuition01').val()),
-              'Tuition02': autoAddZero($('#Tuition02').val()),
-              'Tuition03': autoAddZero($('#Tuition03').val()),
-              'Tuition04': autoAddZero($('#Tuition04').val()),
+              'tuition01': autoAddZero($('#Tuition01').val()),
+              'tuition02': autoAddZero($('#Tuition02').val()),
+              'tuition03': autoAddZero($('#Tuition03').val()),
+              'tuition04': autoAddZero($('#Tuition04').val()),
 
-              'TuitionHigh': autoAddZero($('#TuitionHigh').val()),
-              'Website': autoAddZero($('#Website').val()),
-              'Telephone': autoAddZero($('#Telephone').val()),
-              'Inter_Course_Founded_time': autoAddZero($('#Inter_Course_Founded_time').val()),
-              'Course': autoAddZero($('#Course').val()),
-              'Authentication': autoAddZero($('#Authentication').val()),
-              'Course_evaluation': autoAddZero($('#Course_evaluation').val()),
+              'tuitionhigh': autoAddZero($('#TuitionHigh').val()),
+              'website': autoAddZero($('#Website').val()),
+              'telephone': autoAddZero($('#Telephone').val()),
+              'interCourseFoundedTime': autoAddZero($('#Inter_Course_Founded_time').val()),
+              'course': autoAddZero($('#Course').val()),
+              'authentication': autoAddZero($('#Authentication').val()),
+              'courseEvaluation': autoAddZero($('#Course_evaluation').val()),
 
-              'Student_Num01': autoAddZero($('#Student_Num01').val()),
-              'Student_Num02': autoAddZero($('#Student_Num02').val()),
-              'Student_Num03': autoAddZero($('#Student_Num03').val()),
-              'Student_Num04': autoAddZero($('#Student_Num04').val()),
+              'studentNum01': autoAddZero($('#Student_Num01').val()),
+              'studentNum02': autoAddZero($('#Student_Num02').val()),
+              'studentNum03': autoAddZero($('#Student_Num03').val()),
+              'studentNum04': autoAddZero($('#Student_Num04').val()),
 
-              'Student_Num_All': autoAddZero($('#Student_Num_All').val()),
-              'Student_Capacity': autoAddZero($('#Student_Capacity').val()),
-              'Graduated_Stu_Num': autoAddZero($('#Graduated_Stu_Num').val()),
-              'Stu_Dominant_nationality': autoAddZero($('#Stu_Dominant_nationality').val()),
-              'Stu_Year_Investment': autoAddZero($('#Stu_Year_Investment').val()),
-              'Club_Num': autoAddZero($('#Club_Num').val()),
-              'President_Country': autoAddZero($('#President_Country').val()),
-              'Staff_Num': autoAddZero($('#Staff_Num').val()),
-              'Teacher_Num': autoAddZero($('#Teacher_Num').val()),
-              'Foreign_Teacher_num': autoAddZero($('#Foreign_Teacher_num').val()),
-              'Teacher_Year_Investment': autoAddZero($('#Teacher_Year_Investment').val()),
-              'Teacher_Retention': autoAddZero($('#Teacher_Retention').val()),
-              'Teacher_Salary': autoAddZero($('#Teacher_Salary').val()),
-              'Teacher_Stu_ratio': autoAddZero($('#Teacher_Stu_ratio').val()),
-              'Covered_Area': autoAddZero($('#Covered_Area').val()),
-              'Built_Area': autoAddZero($('#Built_Area').val()),
-              'Hardware': autoAddZero($('#Hardware').val()),
-              'Investment': autoAddZero($('#Investment').val()),
-              'Remark': autoAddZero($('#Remark').val()),
-
-              "Load_People":$.cookie('username'),
-              "member_sign":$.cookie('usertitle')
+              'studentNumAll': autoAddZero($('#Student_Num_All').val()),
+              'studentCapacity': autoAddZero($('#Student_Capacity').val()),
+              'graduatedStuNum': autoAddZero($('#Graduated_Stu_Num').val()),
+              'stuDominantNationality': autoAddZero($('#Stu_Dominant_nationality').val()),
+              'stuYearInvestment': autoAddZero($('#Stu_Year_Investment').val()),
+              'clubNum': autoAddZero($('#Club_Num').val()),
+              'presidentCountry': autoAddZero($('#President_Country').val()),
+              'staffNum': autoAddZero($('#Staff_Num').val()),
+              'teacherNum': autoAddZero($('#Teacher_Num').val()),
+              'foreignTeacherNum': autoAddZero($('#Foreign_Teacher_num').val()),
+              'teacherYearInvestment': autoAddZero($('#Teacher_Year_Investment').val()),
+              'teacherRetention': autoAddZero($('#Teacher_Retention').val()),
+              'teacherSalary': autoAddZero($('#Teacher_Salary').val()),
+              'teacherStuRatio': autoAddZero($('#Teacher_Stu_ratio').val()),
+              'coveredArea': autoAddZero($('#Covered_Area').val()),
+              'builtArea': autoAddZero($('#Built_Area').val()),
+              'hardware': autoAddZero($('#Hardware').val()),
+              'investment': autoAddZero($('#Investment').val()),
+              'remark': autoAddZero($('#Remark').val()),
+              "certificateAuthority": autoAddZero($('#certificate_authority').val()),
+             "studentEvaluation": autoAddZero($('#student_evaluation').val()),
+             "thirdOrganizations": autoAddZero($('#third_organizations').val()),
+             "courseAuthority": autoAddZero($('#course_authority').val()),
+              "loadPeople":$.cookie('username'),
+              //"member_sign":$.cookie('usertitle')
           }
           $.ajax({
-              type: "get",
+              type: "post",
               async: false,
               traditional: true,
               data: insertData,//提交的参数
-              url: 'http://' + changeUrl.address + '/School_api?whereFrom=insert',
-              dataType: "jsonp",//数据类型为jsonp  
-              jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
+              url: 'http://' + changeUrl.address + '/manager/school/addSchool.do',
+             
               success: function (msg) {
                   console.log(msg)
-                  if(msg.msg ==1){
+                  if(msg.msg =='添加学校信息成功'){
                       layer.alert('提交成功',function () {
                           window.location.reload()
                       })
@@ -1014,28 +1028,29 @@ $('#uploadAllData').on("click",function () {
         $.ajax({
             type:'get',
             async:true,
-            url:'http://' + changeUrl.address + '/School_api?whereFrom=AdminSearch',
+            url:'http://' + changeUrl.address + '/manager/school/list.do',
             dataType:"json",
             data:{
                 type:0,
-                School_searchKey: '',
+                searchKey: '',
                 pageNum:1,
-                OnePageNum:1100
+                pageSize:1100
             },
             success:function (res) {
                 console.log(res)
                 var initData = JSON.stringify(res.data)
-                var newData =initData.replace(/School_name/g,"学校中文名").replace(/School_EnglishName/g,"学校英文名").replace(/School_properties/g,"类型")
-                    .replace(/Areas/g,"省").replace(/省02/g,"市").replace(/省03/g,"详细地址").replace(/Founded_time/g,"成立时间").replace(/OperationState/g,"运营状态")
-                    .replace(/School_system/g,"学制").replace(/Tuition01/g,"幼儿园学费").replace(/Tuition02/g,"小学学费").replace(/Tuition03/g,"初中学费").replace(/Tuition04/g,"高中学费")
-                    .replace(/Website/g,"官网").replace(/Telephone/g,"电话").replace(/Inter_Course_成立时间/g,"国际课程认证时间")
-                    .replace(/Course/g,"国际课程").replace(/Authentication/g,"认证").replace(/Course_evaluation/g,"外部考试与评估").replace(/Student_Num_All/g,"总在校生（国际部）")
-                    .replace(/Student_Num01/g,"幼儿园学生数").replace(/Student_Num02/g,"小学学生数").replace(/Student_Num03/g,"初中学生数").replace(/Student_Num04/g,"高中学生数")
-                    .replace(/Student_Capacity/g,"总容量（国际部").replace(/Graduated_Stu_Num/g,"毕业班人数（国际部）").replace(/Stu_Dominant_nationality/g,"学生主要国籍")
-                    .replace(/Stu_Year_Investment/g,"生均年投入").replace(/Club_Num/g,"俱乐部数量").replace(/Staff_Num/g,"总员工数量").replace(/President_Country/g,"校长/国际部主任国籍").replace(/权限不足总员工数量/g,"校长/国际部主任国籍")
-                    .replace(/Teacher_Num/g,"总教师数量").replace(/Foreign_Teacher_num/g,"外籍教师数量").replace(/Teacher_Year_Investment/g,"师均年培训投入").replace(/Teacher_Retention/g,"教师流失率")
-                    .replace(/Teacher_Salary/g,"教师薪酬（三年经验）").replace(/Teacher_Stu_ratio/g,"师生比").replace(/Covered_Area/g,"占地面积（亩）").replace(/Built_Area/g,"建筑面积")
-                    .replace(/Hardware/g,"硬件设施").replace(/Investment/g,"投资信息").replace(/Remark/g,"备注").replace(/Load_People/g,"提交人").replace(/Load_Time/g,"提交时间")
+                var newData =initData.replace(/schoolName/g,"学校中文名").replace(/schoolEnglishname/g,"学校英文名").replace(/schoolProperties/g,"类型")
+                        .replace(/areas/g,"省").replace(/省02/g,"市").replace(/省03/g,"详细地址").replace(/foundedTime/g,"成立时间").replace(/operationstate/g,"运营状态")
+                        .replace(/schoolSystem/g,"学制").replace(/tuition01/g,"幼儿园学费").replace(/tuition02/g,"小学学费").replace(/tuition03/g,"初中学费").replace(/tuition04/g,"高中学费")
+                        .replace(/website/g,"官网").replace(/telephone/g,"电话").replace(/interCourseFoundedTime/g,"国际课程认证时间")
+                        .replace(/course/g,"国际课程").replace(/authentication/g,"认证").replace(/courseEvaluation/g,"外部考试与评估").replace(/studentNumAll/g,"总在校生（国际部）")
+                        .replace(/studentNum01/g,"幼儿园学生数").replace(/studentNum02/g,"小学学生数").replace(/studentNum03/g,"初中学生数").replace(/studentNum04/g,"高中学生数")
+                        .replace(/studentCapacity/g,"总容量（国际部").replace(/graduatedStuNum/g,"毕业班人数（国际部）").replace(/stuDominantNationality/g,"学生主要国籍")
+                        .replace(/stuYearInvestment/g,"生均年投入").replace(/clubNum/g,"俱乐部数量").replace(/staffNum/g,"总员工数量").replace(/presidentCountry/g,"校长/国际部主任国籍").replace(/presidentCountry/g,"校长/国际部主任国籍")
+                        .replace(/teacherNum/g,"总教师数量").replace(/foreignTeacherNum/g,"外籍教师数量").replace(/teacherYearInvestment/g,"师均年培训投入").replace(/teacherRetention/g,"教师流失率")
+                        .replace(/teacherSalary/g,"教师薪酬（三年经验）").replace(/teacherStuRatio/g,"师生比").replace(/coveredArea/g,"占地面积（亩）").replace(/builtArea/g,"建筑面积")
+                        .replace(/hardware/g,"硬件设施").replace(/investment/g,"投资信息").replace(/remark/g,"备注").replace(/loadPeople/g,"提交人").replace(/loadTime/g,"提交时间")
+                        .replace(/certificateAuthority/g,"主流学术保障认证机构").replace(/studentEvaluation/g,"学生评测").replace(/thirdOrganizations/g,"第三方组织机构").replace(/loadPeople/g,"课程")
                 console.log(JSON.parse(newData))
                 downloadExl(JSON.parse(newData))
                 layer.alert('导出成功',{icon:6,skin: 'layui-layer-molv',title:'系统提示' ,closeBtn: 0})
@@ -1072,12 +1087,12 @@ function getProvinceData() {
         }else {
             $.ajax({
                 type:'get',
-                url:'http://' + changeUrl.address + '/School_api?whereFrom=AdminSearch',
+                url:'http://' + changeUrl.address + '/manager/school/list.do',
                 data:{
                     type:1,
-                    School_searchKey: provinceVal,
+                    searchKey: provinceVal,
                     pageNum:1,
-                    OnePageNum:500
+                    pageSize:500
                 },
                 success:function (data) {
                     console.log(data)
@@ -1087,17 +1102,18 @@ function getProvinceData() {
                         layer.confirm('共'+data.count+'条数据，确定导出？',{icon:3},
                             function () {
                                 var initData = JSON.stringify(data.data)
-                                var newData =initData.replace(/School_name/g,"学校中文名").replace(/School_EnglishName/g,"学校英文名").replace(/School_properties/g,"类型")
-                                    .replace(/Areas/g,"省").replace(/省02/g,"市").replace(/省03/g,"详细地址").replace(/Founded_time/g,"成立时间").replace(/OperationState/g,"运营状态")
-                                    .replace(/School_system/g,"学制").replace(/Tuition01/g,"幼儿园学费").replace(/Tuition02/g,"小学学费").replace(/Tuition03/g,"初中学费").replace(/Tuition04/g,"高中学费")
-                                    .replace(/Website/g,"官网").replace(/Telephone/g,"电话").replace(/Inter_Course_成立时间/g,"国际课程认证时间")
-                                    .replace(/Course/g,"国际课程").replace(/Authentication/g,"认证").replace(/Course_evaluation/g,"外部考试与评估").replace(/Student_Num_All/g,"总在校生（国际部）")
-                                    .replace(/Student_Num01/g,"幼儿园学生数").replace(/Student_Num02/g,"小学学生数").replace(/Student_Num03/g,"初中学生数").replace(/Student_Num04/g,"高中学生数")
-                                    .replace(/Student_Capacity/g,"总容量（国际部").replace(/Graduated_Stu_Num/g,"毕业班人数（国际部）").replace(/Stu_Dominant_nationality/g,"学生主要国籍")
-                                    .replace(/Stu_Year_Investment/g,"生均年投入").replace(/Club_Num/g,"俱乐部数量").replace(/Staff_Num/g,"总员工数量").replace(/President_Country/g,"校长/国际部主任国籍").replace(/权限不足总员工数量/g,"校长/国际部主任国籍")
-                                    .replace(/Teacher_Num/g,"总教师数量").replace(/Foreign_Teacher_num/g,"外籍教师数量").replace(/Teacher_Year_Investment/g,"师均年培训投入").replace(/Teacher_Retention/g,"教师流失率")
-                                    .replace(/Teacher_Salary/g,"教师薪酬（三年经验）").replace(/Teacher_Stu_ratio/g,"师生比").replace(/Covered_Area/g,"占地面积（亩）").replace(/Built_Area/g,"建筑面积")
-                                    .replace(/Hardware/g,"硬件设施").replace(/Investment/g,"投资信息").replace(/Remark/g,"备注").replace(/Load_People/g,"提交人").replace(/Load_Time/g,"提交时间")
+                                var newData =initData.replace(/schoolName/g,"学校中文名").replace(/schoolEnglishname/g,"学校英文名").replace(/schoolProperties/g,"类型")
+                        .replace(/areas/g,"省").replace(/省02/g,"市").replace(/省03/g,"详细地址").replace(/foundedTime/g,"成立时间").replace(/operationstate/g,"运营状态")
+                        .replace(/schoolSystem/g,"学制").replace(/tuition01/g,"幼儿园学费").replace(/tuition02/g,"小学学费").replace(/tuition03/g,"初中学费").replace(/tuition04/g,"高中学费")
+                        .replace(/website/g,"官网").replace(/telephone/g,"电话").replace(/interCourseFoundedTime/g,"国际课程认证时间")
+                        .replace(/course/g,"国际课程").replace(/authentication/g,"认证").replace(/courseEvaluation/g,"外部考试与评估").replace(/studentNumAll/g,"总在校生（国际部）")
+                        .replace(/studentNum01/g,"幼儿园学生数").replace(/studentNum02/g,"小学学生数").replace(/studentNum03/g,"初中学生数").replace(/studentNum04/g,"高中学生数")
+                        .replace(/studentCapacity/g,"总容量（国际部").replace(/graduatedStuNum/g,"毕业班人数（国际部）").replace(/stuDominantNationality/g,"学生主要国籍")
+                        .replace(/stuYearInvestment/g,"生均年投入").replace(/clubNum/g,"俱乐部数量").replace(/staffNum/g,"总员工数量").replace(/presidentCountry/g,"校长/国际部主任国籍").replace(/presidentCountry/g,"校长/国际部主任国籍")
+                        .replace(/teacherNum/g,"总教师数量").replace(/foreignTeacherNum/g,"外籍教师数量").replace(/teacherYearInvestment/g,"师均年培训投入").replace(/teacherRetention/g,"教师流失率")
+                        .replace(/teacherSalary/g,"教师薪酬（三年经验）").replace(/teacherStuRatio/g,"师生比").replace(/coveredArea/g,"占地面积（亩）").replace(/builtArea/g,"建筑面积")
+                        .replace(/hardware/g,"硬件设施").replace(/investment/g,"投资信息").replace(/remark/g,"备注").replace(/loadPeople/g,"提交人").replace(/loadTime/g,"提交时间")
+                        .replace(/certificateAuthority/g,"主流学术保障认证机构").replace(/studentEvaluation/g,"学生评测").replace(/thirdOrganizations/g,"第三方组织机构").replace(/loadPeople/g,"课程")
                                 console.log(JSON.parse(newData))
                                 downloadExl(JSON.parse(newData))
                                 layer.alert('导出成功',{icon:6,skin: 'layui-layer-molv',title:'系统提示' ,closeBtn: 0},function () {

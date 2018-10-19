@@ -103,9 +103,9 @@
         <label class="layui-form-label">运营状态</label>
         <div class="layui-input-inline">
             <select name="interest" lay-filter="OperationState" id="OperationState">
-                <option value="0" selected="">运营中</option>
-                <option value="1" >停办</option>
-                <option value="2">筹建</option>
+                <option value="运营中" selected="">运营中</option>
+                <option value="停办" >停办</option>
+                <option value="筹建">筹建</option>
             </select>
         </div>
     </div>
@@ -206,6 +206,9 @@
             <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('澳洲QCE；','Course')" value="澳洲QCE" />
             <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('澳洲WACE；','Course')" value="澳洲WACE" />
             <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('加拿大课程；','Course')" value="加拿大课程" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('双语课程；','Course')" value="双语课程" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('校本课程；','Course')" value="校本课程" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('ESL；','Course')" value="ESL" />
             <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('其他；','Course')" value="其他" />
         </div>
     </div>
@@ -261,7 +264,7 @@
             <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('IGCSE;','Course_evaluation')" value="IGCSE" />
         </div>
     </div>
-<!--学生信息-->
+    <!--学生信息-->
     <blockquote class="layui-elem-quote">课程信息</blockquote>
     <div class="layui-form-item">
         <div class="layui-row">
@@ -430,7 +433,82 @@
             <textarea placeholder="请输入内容" class="layui-textarea" name="Remark" id="Remark"></textarea>
         </div>
     </div>
-
+    <!-- 资格认证 -->
+    <blockquote class="layui-elem-quote">资格认证</blockquote>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon">&#xe658;</i> 主流学术保障认证机构</label>
+        <div class="layui-input-inline my-inline">
+            <input type="text" name="certificate_authority"  placeholder="" lay-verify="required" autocomplete="off" class="layui-input" id="certificate_authority">
+        </div>
+        <div class="layui-form-mid layui-word-aux">*注意：以分号结尾</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline my-inline MB5" style="width: 600px;">
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand;margin-left: 10px;" onclick="javascript:Insert('IPC；','certificate_authority')" value="IPC" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('CIS；','certificate_authority')" value="CIS" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('NEASC；','certificate_authority')" value="NEASC" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('WASC；','certificate_authority')" value="WASC" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('COBIS；','certificate_authority')" value="COBIS" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('ECIS；','certificate_authority')" value="ECIS" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('AdvandED；','certificate_authority')" value="AdvandED" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon">&#xe658;</i> 学生评测</label>
+        <div class="layui-input-inline my-inline">
+            <input type="text" name="student_evaluation"  placeholder="" lay-verify="required" autocomplete="off" class="layui-input" id="student_evaluation">
+        </div>
+        <div class="layui-form-mid layui-word-aux">*注意：以分号结尾</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline my-inline MB5" style="width: 600px;">
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand;margin-left: 10px;" onclick="javascript:Insert('ISA；','student_evaluation')" value="ISA" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('WIDA；','student_evaluation')" value="WIDA" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon">&#xe658;</i> 第三方组织机构</label>
+        <div class="layui-input-inline my-inline">
+            <input type="text" name="third_organizations"  placeholder="" lay-verify="required" autocomplete="off" class="layui-input" id="third_organizations">
+        </div>
+        <div class="layui-form-mid layui-word-aux">*注意：以分号结尾</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline my-inline MB5" style="width: 600px;">
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand;margin-left: 10px;" onclick="javascript:Insert('ACAMIS；','third_organizations')" value="ACAMIS" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('EARCOS；','third_organizations')" value="EARCOS" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('FOBISIA；','third_organizations')" value="FOBISIA" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('圆方；','third_organizations')" value="圆方" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon">&#xe658;</i> 课程认证</label>
+        <div class="layui-input-inline my-inline">
+            <input type="text" name="course_authority"  placeholder="" lay-verify="required" autocomplete="off" class="layui-input" id="course_authority">
+        </div>
+        <div class="layui-form-mid layui-word-aux">*注意：以分号结尾</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline my-inline MB5" style="width: 600px;">
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand;margin-left: 10px;" onclick="javascript:Insert('IPC；','course_authority')" value="IPC" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('IBPYP；','course_authority')" value="IBPYP" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('IBMYP；','course_authority')" value="IBMYP" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('IBDP；','course_authority')" value="IBDP" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('AP；','course_authority')" value="AP" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('A-Level(剑桥)；','course_authority')" value="A-Level(剑桥)" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('A-Level(爱德思)；','course_authority')" value="A-Level(爱德思)" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('A-Level(牛津AQA)','course_authority')" value="A-Level(牛津AQA)" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('加拿大；','course_authority')" value="加拿大" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('澳洲；','course_authority')" value="澳洲" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('IPC；','course_authority')" value="IPC" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('其他；','course_authority')" value="其他" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('AdvandED；','course_authority')" value="AdvandED" />
+        </div>
+    </div>
     <!--墨绿分割线-->
     <hr class="layui-bg-green" style="margin-top: 40px;margin-bottom: 20px;">
 
@@ -440,7 +518,7 @@
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
-
+    
 </form>
 
 
@@ -616,6 +694,9 @@
                 <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('澳洲QCE；','Course-edit')" value="澳洲QCE" />
                 <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('澳洲WACE；','Course-edit')" value="澳洲WACE" />
                 <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('加拿大课程；','Course-edit')" value="加拿大课程" />
+                 <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('双语课程；','Course')" value="双语课程" />
+                <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('校本课程；','Course')" value="校本课程" />
+                <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('ESL；','Course')" value="ESL" />
                 <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('其他；','Course-edit')" value="其他" />
             </div>
         </div>
@@ -840,7 +921,82 @@
                 <textarea placeholder="请输入内容" class="layui-textarea" name="Remark" id="Remark-edit"></textarea>
             </div>
         </div>
-
+        <!-- 资格认证 -->
+    <blockquote class="layui-elem-quote">资格认证</blockquote>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon">&#xe658;</i> 主流学术保障认证机构</label>
+        <div class="layui-input-inline my-inline">
+            <input type="text" name="certificate_authority"  placeholder="" lay-verify="required" autocomplete="off" class="layui-input" id="certificate_authority-edit">
+        </div>
+        <div class="layui-form-mid layui-word-aux">*注意：以分号结尾</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline my-inline MB5" style="width: 600px;">
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand;margin-left: 10px;" onclick="javascript:Insert('IPC；','certificate_authority-edit')" value="IPC" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('CIS；','certificate_authority-edit')" value="CIS" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('NEASC；','certificate_authority-edit')" value="NEASC" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('WASC；','certificate_authority-edit')" value="WASC" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('COBIS；','certificate_authority-edit')" value="COBIS" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('ECIS；','certificate_authority-edit')" value="ECIS" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('AdvandED；','certificate_authority-edit')" value="AdvandED" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon">&#xe658;</i> 学生评测</label>
+        <div class="layui-input-inline my-inline">
+            <input type="text" name="student_evaluation"  placeholder="" lay-verify="required" autocomplete="off" class="layui-input" id="student_evaluation-edit">
+        </div>
+        <div class="layui-form-mid layui-word-aux">*注意：以分号结尾</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline my-inline MB5" style="width: 600px;">
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand;margin-left: 10px;" onclick="javascript:Insert('ISA；','student_evaluation-edit')" value="ISA" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('WIDA；','student_evaluation-edit')" value="WIDA" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon">&#xe658;</i> 第三方组织机构</label>
+        <div class="layui-input-inline my-inline">
+            <input type="text" name="third_organizations"  placeholder="" lay-verify="required" autocomplete="off" class="layui-input" id="third_organizations-edit">
+        </div>
+        <div class="layui-form-mid layui-word-aux">*注意：以分号结尾</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline my-inline MB5" style="width: 600px;">
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand;margin-left: 10px;" onclick="javascript:Insert('ACAMIS；','third_organizations-edit')" value="ACAMIS" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('EARCOS；','third_organizations-edit')" value="EARCOS" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('FOBISIA；','third_organizations-edit')" value="FOBISIA" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('圆方；','third_organizations-edit')" value="圆方" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon">&#xe658;</i> 课程认证</label>
+        <div class="layui-input-inline my-inline">
+            <input type="text" name="course_authority"  placeholder="" lay-verify="required" autocomplete="off" class="layui-input" id="course_authority-edit">
+        </div>
+        <div class="layui-form-mid layui-word-aux">*注意：以分号结尾</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline my-inline MB5" style="width: 600px;">
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand;margin-left: 10px;" onclick="javascript:Insert('IPC；','course_authority-edit')" value="IPC" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('IBPYP；','course_authority-edit')" value="IBPYP" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('IBMYP；','course_authority-edit')" value="IBMYP" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('IBDP；','course_authority-edit')" value="IBDP" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('AP；','course_authority-edit')" value="AP" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('A-Level(剑桥)；','course_authority-edit')" value="A-Level(剑桥)" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('A-Level(爱德思)；','course_authority-edit')" value="A-Level(爱德思)" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('A-Level(牛津AQA)','course_authority-edit')" value="A-Level(牛津AQA)" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('加拿大；','course_authority-edit')" value="加拿大" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('澳洲；','course_authority-edit')" value="澳洲" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('IPC；','course_authority-edit')" value="IPC" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('其他；','course_authority-edit')" value="其他" />
+            <input type="button" class="layui-btn layui-btn-normal" style="cursor:hand" onclick="javascript:Insert('AdvandED；','course_authority-edit')" value="AdvandED" />
+        </div>
+    </div>
         <!--墨绿分割线-->
         <hr class="layui-bg-green" style="margin-top: 40px;margin-bottom: 20px;">
 
@@ -912,14 +1068,15 @@
 <!--url:'http://192.168.0.170:8080/nsi-0.9/School_api?whereFrom=AdminSearch',-->
 <!--url:'http://192.168.191.4:8080/nsi-0.9/School_api?whereFrom=AdminSearch',-->
 <!--url:'http://data.xinxueshuo.cn:80/nsi-0.9/School_api?whereFrom=AdminSearch',-->
+<!-- http://192.168.0.37:8080/nsi-1.0/school/list.do? -->
 <!--数据表格-->
-<table class="layui-table" lay-data="{ page:true,id:'idTest',height: 'full-150',limit: 30,limits:[10,20,30,40,50,60,70,80,90], where: {School_searchKey: '',type:0},url:'http://data.xinxueshuo.cn:80/nsi-0.9/School_api?whereFrom=AdminSearch',request: { pageName: 'pageNum' ,limitName: 'OnePageNum'}}" lay-filter="demo">
+<table class="layui-table" lay-data="{ page:true,id:'idTest',height: 'full-150',limit: 30,limits:[10,20,30,40,50,60,70,80,90], where: {searchKey: '',type:0},url:'http://data.xinxueshuo.cn:80/nsi-1.0/manager/school/list.do',request: { pageName: 'pageNum' ,limitName: 'pageSize'}}" lay-filter="demo">
     <thead class="tofix">
     <tr>
         <th lay-data="{type:'checkbox', fixed: 'left'}" rowspan="2"></th>
-        <th lay-data="{field:'School_name',width:200, align:'center',fixed: true}"  rowspan="2">中文名</th>
-        <th lay-data="{field:'Id', width:100, sort: true,align:'center'}" rowspan="2">ID</th>
-        <th lay-data="{field:'School_EnglishName', width:200, align:'center'}"  rowspan="2">英文名</th>
+        <th lay-data="{field:'schoolName',width:200, align:'center',fixed: true}"  rowspan="2">中文名</th>
+        <th lay-data="{field:'id', width:100, sort: true,align:'center'}" rowspan="2">ID</th>
+        <th lay-data="{field:'schoolEnglishname', width:200, align:'center'}"  rowspan="2">英文名</th>
         <th lay-data="{align:'center'}" colspan="3">基本信息</th>
         <th lay-data="{align:'center'}" colspan="3">课程&认证</th>
         <th lay-data="{align:'center'}" colspan="3">地址</th>
@@ -931,61 +1088,67 @@
         <th lay-data="{align:'center'}" colspan="3">投入/年</th>
         <th lay-data="{align:'center'}" colspan="5">基建&投资</th>
         <th lay-data="{align:'center'}" colspan="2">联系方式</th>
+        <th lay-data="{align:'center'}" colspan="4">资格认证</th>
 
         <th lay-data="{fixed: 'right', width:180, align:'center', toolbar: '#barDemo'}" rowspan="2">操作</th>
     </tr>
     <tr>
 
 
-        <th lay-data="{field:'School_properties', width:100,sort:true,align:'center'}" >类型</th>
-        <th lay-data="{field:'OperationState', width:120,sort:true,align:'center'}" >运营状态</th>
-        <th lay-data="{field:'School_system', width:145, sort: true,align:'center'}" >学制</th>
+        <th lay-data="{field:'schoolProperties', width:100,sort:true,align:'center'}" >类型</th>
+        <th lay-data="{field:'operationstate', width:120,sort:true,align:'center'}" >运营状态</th>
+        <th lay-data="{field:'schoolSystem', width:145, sort: true,align:'center'}" >学制</th>
 
-        <th lay-data="{field:'Course', width:140, sort: true,align:'center'}" >国际课程</th>
-        <th lay-data="{field:'Course_evaluation', width:160, sort: true,align:'center'}" >外部考试与评估</th>
-        <th lay-data="{field:'Authentication', width:120, sort: true,align:'center'}" >认证</th>
+        <th lay-data="{field:'course', width:140, sort: true,align:'center'}" >国际课程</th>
+        <th lay-data="{field:'courseEvaluation', width:160, sort: true,align:'center'}" >外部考试与评估</th>
+        <th lay-data="{field:'authentication', width:120, sort: true,align:'center'}" >认证</th>
 
-        <th lay-data="{field:'Areas', sort: true,width:100,align:'center'}">省</th>
-        <th lay-data="{field:'Areas02', width:100,align:'center'}">市</th>
-        <th lay-data="{field:'Areas03', width:300,align:'center'}">详细地址</th>
+        <th lay-data="{field:'areas', sort: true,width:100,align:'center'}">省</th>
+        <th lay-data="{field:'areas02', width:100,align:'center'}">市</th>
+        <th lay-data="{field:'areas03', width:300,align:'center'}">详细地址</th>
 
-        <th lay-data="{field:'Founded_time', width:120, sort: true,align:'center'}" >建校</th>
-        <th lay-data="{field:'Inter_Course_Founded_time', width:140, sort: true,align:'center'}" >国际课程认证</th>
+        <th lay-data="{field:'foundedTime', width:120, sort: true,align:'center'}" >建校</th>
+        <th lay-data="{field:'interCourseFoundedTime', width:140, sort: true,align:'center'}" >国际课程认证</th>
 
-        <th lay-data="{field:'Tuition01', width:100, sort: true, align:'center'}" >幼儿园</th>
-        <th lay-data="{field:'Tuition02', width:100, sort: true,align:'center'}" >小学</th>
-        <th lay-data="{field:'Tuition03', width:100, sort: true, align:'center'}" >初中</th>
-        <th lay-data="{field:'Tuition04', width:100, sort: true, align:'center'}" >高中</th>
+        <th lay-data="{field:'tuition01', width:100, sort: true, align:'center'}" >幼儿园</th>
+        <th lay-data="{field:'tuition02', width:100, sort: true,align:'center'}" >小学</th>
+        <th lay-data="{field:'tuition03', width:100, sort: true, align:'center'}" >初中</th>
+        <th lay-data="{field:'tuition04', width:100, sort: true, align:'center'}" >高中</th>
 
-        <th lay-data="{field:'Student_Num01', width:100, sort: true, salign:'center'}" >幼儿园</th>
-        <th lay-data="{field:'Student_Num02', width:100, sort: true, align:'center'}" >小学</th>
-        <th lay-data="{field:'Student_Num03', width:100, sort: true, align:'center'}" >初中</th>
-        <th lay-data="{field:'Student_Num04', width:100, sort: true, align:'center'}" >高中</th>
-        <th lay-data="{field:'Graduated_Stu_Num', width:160, sort: true, align:'center'}" >毕业班（国际部）</th>
-        <th lay-data="{field:'Student_Num_All', width:170, sort: true, align:'center'}" >总在校生（国际部）</th>
-        <th lay-data="{field:'Student_Capacity', width:160, sort: true, align:'center'}" >总容量（国际部）</th>
+        <th lay-data="{field:'studentNum01', width:100, sort: true, salign:'center'}" >幼儿园</th>
+        <th lay-data="{field:'studentNum02', width:100, sort: true, align:'center'}" >小学</th>
+        <th lay-data="{field:'studentNum03', width:100, sort: true, align:'center'}" >初中</th>
+        <th lay-data="{field:'studentNum04', width:100, sort: true, align:'center'}" >高中</th>
+        <th lay-data="{field:'graduatedStuNum', width:160, sort: true, align:'center'}" >毕业班（国际部）</th>
+        <th lay-data="{field:'studentNumAll', width:170, sort: true, align:'center'}" >总在校生（国际部）</th>
+        <th lay-data="{field:'studentCapacity', width:160, sort: true, align:'center'}" >总容量（国际部）</th>
 
-        <th lay-data="{field:'Staff_Num', width:100, sort: true,align:'center'}" >总员工</th>
-        <th lay-data="{field:'Teacher_Num', width:100, sort: true, align:'center'}" >总教师</th>
-        <th lay-data="{field:'Foreign_Teacher_num', width:100, sort: true, align:'center'}" >外籍教师</th>
-        <th lay-data="{field:'Teacher_Stu_ratio', width:100, sort: true, align:'center'}" >师生比</th>
-        <th lay-data="{field:'Teacher_Retention', width:120, sort: true, align:'center'}" >教师流失率</th>
+        <th lay-data="{field:'staffNum', width:100, sort: true,align:'center'}" >总员工</th>
+        <th lay-data="{field:'teacherNum', width:100, sort: true, align:'center'}" >总教师</th>
+        <th lay-data="{field:'foreignTeacherNum', width:100, sort: true, align:'center'}" >外籍教师</th>
+        <th lay-data="{field:'teacherStuRatio', width:100, sort: true, align:'center'}" >师生比</th>
+        <th lay-data="{field:'teacherRetention', width:120, sort: true, align:'center'}" >教师流失率</th>
 
-        <th lay-data="{field:'Stu_Dominant_nationality', width:120, sort: true,align:'center'}" >学生</th>
-        <th lay-data="{field:'President_Country', width:140, sort: true,align:'center'}" >校长/国际部主任</th>
+        <th lay-data="{field:'stuDominantNationality', width:120, sort: true,align:'center'}" >学生</th>
+        <th lay-data="{field:'presidentCountry', width:140, sort: true,align:'center'}" >校长/国际部主任</th>
 
-        <th lay-data="{field:'Club_Num', width:120, sort: true,align:'center'}" >俱乐部数量</th>
-        <th lay-data="{field:'Stu_Year_Investment', width:120, sort: true,align:'center'}" >学生投入</th>
-        <th lay-data="{field:'Teacher_Year_Investment', width:120, sort: true,align:'center'}" >教师培训投入</th>
+        <th lay-data="{field:'clubNum', width:120, sort: true,align:'center'}" >俱乐部数量</th>
+        <th lay-data="{field:'stuYearInvestment', width:120, sort: true,align:'center'}" >学生投入</th>
+        <th lay-data="{field:'teacherYearInvestment', width:120, sort: true,align:'center'}" >教师培训投入</th>
 
-        <th lay-data="{field:'Covered_Area', width:140, sort: true,align:'center'}" >占地面积（亩）</th>
-        <th lay-data="{field:'Built_Area', width:166, sort: true,align:'center'}" >建筑面积（平方米）</th>
-        <th lay-data="{field:'Hardware', width:140, align:'center'}" >硬件设施</th>
-        <th lay-data="{field:'Investment', width:140, align:'center'}" >投资信息</th>
-        <th lay-data="{field:'Remark', width:140,align:'center'}" >备注</th>
+        <th lay-data="{field:'coveredArea', width:140, sort: true,align:'center'}" >占地面积（亩）</th>
+        <th lay-data="{field:'builtArea', width:166, sort: true,align:'center'}" >建筑面积（平方米）</th>
+        <th lay-data="{field:'hardware', width:140, align:'center'}" >硬件设施</th>
+        <th lay-data="{field:'investment', width:140, align:'center'}" >投资信息</th>
+        <th lay-data="{field:'remark', width:140,align:'center'}" >备注</th>
 
-        <th lay-data="{field:'Website', width:140,align:'center'}" >官网</th>
-        <th lay-data="{field:'Telephone', width:140,align:'center'}" >电话</th>
+        <th lay-data="{field:'website', width:140,align:'center'}" >官网</th>
+        <th lay-data="{field:'telephone', width:140,align:'center'}" >电话</th>
+
+        <th lay-data="{field:'certificateAuthority', width:140,align:'center'}" >主流学术保障认证机构</th>
+        <th lay-data="{field:'studentEvaluation', width:140,align:'center'}" >学生评测</th>
+        <th lay-data="{field:'thirdOrganizations', width:140,align:'center'}" >第三方组织机构</th>
+        <th lay-data="{field:'courseAuthority', width:140,align:'center'}" >课程</th>
     </tr>
     </thead>
 
@@ -1018,6 +1181,31 @@
 <script src="./src/js/school/school.js?v=1.0.3"></script>
 
 
-
+<script>
+    $('#School_name').blur(function(){
+        if($('#School_name').val()==''){
+            return
+        }
+        $.ajax({
+            type: "get",
+            url: 'http://' + changeUrl.address + '/school/check_valid.do?schoolName='+$('#School_name').val(),
+            success: function (msg) {
+                if(msg.code===1){
+                    flag=layer.alert('学校名已存在',{
+                        skin: 'layui-layer-molv' //样式类名
+                        ,closeBtn: 0
+                        ,icon:4
+                    },function () {
+                        layer.close(flag)
+                         $('#School_name').val('')
+                    })
+                }
+            },
+            error: function () {
+                alert('网络繁忙，请稍后再试！');
+            }
+        });
+    })
+</script>
 </body>
 </html>

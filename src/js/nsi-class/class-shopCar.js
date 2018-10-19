@@ -9,9 +9,9 @@ function getShopCarData() {
             elem: '#demo'
             ,cols: [[ //标题栏
                 {type:'checkbox', fixed: 'left',rowspan:2}
-                ,{field:'School_name',width:200, align:'center',fixed: true,title:'中文名',rowspan:2}
-                ,{field: 'Id',width: 80, sort: true,align:'center',title: 'ID',rowspan:2}
-                ,{field:'School_EnglishName', width:200, align:'center',title:'英文名',rowspan:2}
+                ,{field:'schoolName',width:200, align:'center',fixed: true,title:'中文名',rowspan:2}
+                ,{field: 'id',width: 80, sort: true,align:'center',title: 'ID',rowspan:2}
+                ,{field:'schoolEnglishname', width:200, align:'center',title:'英文名',rowspan:2}
                 ,{align:'center',title:'基本信息',colspan:3 }
                 ,{align:'center',title:'课程&认证',colspan:3 }
                 ,{align:'center',title:'地址',colspan:3 }
@@ -23,56 +23,62 @@ function getShopCarData() {
                 ,{align:'center',title:'投入/年',colspan:3}
                 ,{align:'center',title:'基建&投资',colspan:5}
                 ,{align:'center',title:'联系方式',colspan:2}
+                 ,{align:'center',title:'资格认证',colspan:4}
                 ,{fixed: 'right', width:80, align:'center', title:'操作',toolbar: '#barDemo'}
             ], [
-                {field:'School_properties', width:100,sort:true,align:'center',title:'类型'}
-                ,{field:'OperationState', width:120,sort:true,align:'center',title:'运营状态'}
-                ,{field:'School_system', width:145, sort: true,align:'center',title:'学制'}
+                {field:'schoolProperties', width:100,sort:true,align:'center',title:'类型'}
+                ,{field:'operationstate', width:120,sort:true,align:'center',title:'运营状态'}
+                ,{field:'schoolSystem', width:145, sort: true,align:'center',title:'学制'}
 
-                ,{field:'Course', width:140, sort: true,align:'center',title:'国际课程'}
-                ,{field:'Course_evaluation', width:160, sort: true,align:'center',title:'外部考试与评估'}
-                ,{field:'Authentication', width:120, sort: true,align:'center',title:'认证'}
+                ,{field:'course', width:140, sort: true,align:'center',title:'国际课程'}
+                ,{field:'courseEvaluation', width:160, sort: true,align:'center',title:'外部考试与评估'}
+                ,{field:'authentication', width:120, sort: true,align:'center',title:'认证'}
 
-                ,{field:'Areas', sort: true,width:100,align:'center',title:'省'}
-                ,{field:'Areas02', width:100,align:'center',title:'市'}
-                ,{field:'Areas03', width:300,align:'center',title:'详细地址'}
+                ,{field:'areas', sort: true,width:100,align:'center',title:'省'}
+                ,{field:'areas02', width:100,align:'center',title:'市'}
+                ,{field:'areas03', width:300,align:'center',title:'详细地址'}
 
-                ,{field:'Founded_time', width:120, sort: true,align:'center',title:'建校'}
-                ,{field:'Inter_Course_Founded_time', width:140, sort: true,align:'center',title:'国际课程认证'}
+                ,{field:'foundedTime', width:120, sort: true,align:'center',title:'建校'}
+                ,{field:'interCourseFoundedTime', width:140, sort: true,align:'center',title:'国际课程认证'}
 
-                ,{field:'Tuition01', width:100, sort: true, align:'center',title:'幼儿园'}
-                ,{field:'Tuition02', width:100, sort: true, align:'center',title:'小学'}
-                ,{field:'Tuition03', width:100, sort: true, align:'center',title:'初中'}
-                ,{field:'Tuition04', width:100, sort: true, align:'center',title:'高中'}
+                ,{field:'tuition01', width:100, sort: true, align:'center',title:'幼儿园'}
+                ,{field:'tuition02', width:100, sort: true, align:'center',title:'小学'}
+                ,{field:'tuition03', width:100, sort: true, align:'center',title:'初中'}
+                ,{field:'tuition04', width:100, sort: true, align:'center',title:'高中'}
 
-                ,{field:'Student_Num01', width:100, sort: true, align:'center',title:'幼儿园'}
-                ,{field:'Student_Num02', width:100, sort: true, align:'center',title:'小学'}
-                ,{field:'Student_Num03', width:100, sort: true, align:'center',title:'初中'}
-                ,{field:'Student_Num04', width:100, sort: true, align:'center',title:'高中'}
-                ,{field:'Graduated_Stu_Num', width:160, sort: true,align:'center',title:'毕业班（国际部）'}
-                ,{field:'Student_Num_All', width:170, sort: true, align:'center',title:'总在校生（国际部）'}
-                ,{field:'Student_Capacity', width:160, sort: true, align:'center',title:'总容量（国际部）'}
+                ,{field:'studentNum01', width:100, sort: true, align:'center',title:'幼儿园'}
+                ,{field:'studentNum02', width:100, sort: true, align:'center',title:'小学'}
+                ,{field:'studentNum03', width:100, sort: true, align:'center',title:'初中'}
+                ,{field:'studentNum04', width:100, sort: true, align:'center',title:'高中'}
+                ,{field:'graduatedStuNum', width:160, sort: true,align:'center',title:'毕业班（国际部）'}
+                ,{field:'studentNumAll', width:170, sort: true, align:'center',title:'总在校生（国际部）'}
+                ,{field:'studentCapacity', width:160, sort: true, align:'center',title:'总容量（国际部）'}
 
-                ,{field:'Staff_Num', width:100, sort: true,align:'center',title:'总员工'}
-                ,{field:'Teacher_Num', width:100, sort: true, align:'center',title:'总教师'}
-                ,{field:'Foreign_Teacher_num', width:100, sort: true, align:'center',title:'外籍教师'}
-                ,{field:'Teacher_Stu_ratio', width:100, sort: true, align:'center',title:'师生比'}
-                ,{field:'Teacher_Retention', width:120, sort: true, align:'center',title:'教师流失率'}
-                ,{field:'Stu_Dominant_nationality', width:120, sort: true,align:'center',title:'学生'}
-                ,{field:'President_Country', width:140, sort: true,align:'center',title:'校长/国际部主任'}
+                ,{field:'staffNum', width:100, sort: true,align:'center',title:'总员工'}
+                ,{field:'teacherNum', width:100, sort: true, align:'center',title:'总教师'}
+                ,{field:'foreignTeacherNum', width:100, sort: true, align:'center',title:'外籍教师'}
+                ,{field:'teacherStuRatio', width:100, sort: true, align:'center',title:'师生比'}
+                ,{field:'teacherRetention', width:120, sort: true, align:'center',title:'教师流失率'}
+                ,{field:'stuDominantNationality', width:120, sort: true,align:'center',title:'学生'}
+                ,{field:'presidentCountry', width:140, sort: true,align:'center',title:'校长/国际部主任'}
 
-                ,{field:'Club_Num', width:120, sort: true,align:'center',title:'俱乐部数量'}
-                ,{field:'Stu_Year_Investment', width:120, sort: true,align:'center',title:'学生投入'}
-                ,{field:'Teacher_Year_Investment', width:120, sort: true,align:'center',title:'教师培训投入'}
+                ,{field:'clubNum', width:120, sort: true,align:'center',title:'俱乐部数量'}
+                ,{field:'stuYearInvestment', width:120, sort: true,align:'center',title:'学生投入'}
+                ,{field:'teacherYearInvestment', width:120, sort: true,align:'center',title:'教师培训投入'}
 
-                ,{field:'Covered_Area', width:140, sort: true,align:'center',title:'占地面积（亩）'}
-                ,{field:'Built_Area', width:166, sort: true,align:'center',title:'建筑面积（平方米）'}
-                ,{field:'Hardware', width:140, align:'center',title:'硬件设施'}
-                ,{field:'Investment', width:140, align:'center',title:'投资信息'}
-                ,{field:'Remark', width:140,align:'center',title:'备注'}
+                ,{field:'coveredArea', width:140, sort: true,align:'center',title:'占地面积（亩）'}
+                ,{field:'builtArea', width:166, sort: true,align:'center',title:'建筑面积（平方米）'}
+                ,{field:'hardware', width:140, align:'center',title:'硬件设施'}
+                ,{field:'investment', width:140, align:'center',title:'投资信息'}
+                ,{field:'remark', width:140,align:'center',title:'备注'}
 
-                ,{field:'Website', width:140,align:'center',title:'官网'}
-                ,{field:'Telephone', width:140,align:'center',title:'电话'}
+                ,{field:'website', width:140,align:'center',title:'官网'}
+                ,{field:'telephone', width:140,align:'center',title:'电话'}
+
+                ,{field:'certificateAuthority', width:140,align:'center',title:'主流学术保障认证机构'}
+                ,{field:'studentEvaluation', width:140,align:'center',title:'学生评测'}
+                ,{field:'thirdOrganizations', width:140,align:'center',title:'第三方组织机构'}
+                ,{field:'courseAuthority', width:140,align:'center',title:'课程'}
 
             ]]
             ,data:initData
@@ -116,17 +122,18 @@ function getShopCarData() {
                         title:'系统提示'
                     }, function(){
                         layer.alert('导出成功', {icon: 6 ,title:'系统提示'});
-                        var newData =initData.replace(/School_name/g,"学校中文名").replace(/School_EnglishName/g,"学校英文名").replace(/School_properties/g,"类型")
-                            .replace(/Areas/g,"省").replace(/省02/g,"市").replace(/省03/g,"详细地址").replace(/Founded_time/g,"成立时间").replace(/OperationState/g,"运营状态")
-                            .replace(/School_system/g,"学制").replace(/Tuition01/g,"幼儿园学费").replace(/Tuition02/g,"小学学费").replace(/Tuition03/g,"初中学费").replace(/Tuition04/g,"高中学费")
-                            .replace(/Website/g,"官网").replace(/Telephone/g,"电话").replace(/Inter_Course_成立时间/g,"国际课程认证时间")
-                            .replace(/Course/g,"国际课程").replace(/Authentication/g,"认证").replace(/Course_evaluation/g,"外部考试与评估").replace(/Student_Num_All/g,"总在校生（国际部）")
-                            .replace(/Student_Num01/g,"幼儿园学生数").replace(/Student_Num02/g,"小学学生数").replace(/Student_Num03/g,"初中学生数").replace(/Student_Num04/g,"高中学生数")
-                            .replace(/Student_Capacity/g,"总容量（国际部").replace(/Graduated_Stu_Num/g,"毕业班人数（国际部）").replace(/Stu_Dominant_nationality/g,"学生主要国籍")
-                            .replace(/Stu_Year_Investment/g,"生均年投入").replace(/Club_Num/g,"俱乐部数量").replace(/Staff_Num/g,"总员工数量").replace(/President_Country/g,"校长/国际部主任国籍").replace(/权限不足总员工数量/g,"校长/国际部主任国籍")
-                            .replace(/Teacher_Num/g,"总教师数量").replace(/Foreign_Teacher_num/g,"外籍教师数量").replace(/Teacher_Year_Investment/g,"师均年培训投入").replace(/Teacher_Retention/g,"教师流失率")
-                            .replace(/Teacher_Salary/g,"教师薪酬（三年经验）").replace(/Teacher_Stu_ratio/g,"师生比").replace(/Covered_Area/g,"占地面积（亩）").replace(/Built_Area/g,"建筑面积")
-                            .replace(/Hardware/g,"硬件设施").replace(/Investment/g,"投资信息").replace(/Remark/g,"备注").replace(/Load_People/g,"提交人").replace(/Load_Time/g,"提交时间")
+                        var newData =initData.replace(/schoolName/g,"学校中文名").replace(/schoolEnglishname/g,"学校英文名").replace(/schoolProperties/g,"类型")
+                        .replace(/areas/g,"省").replace(/省02/g,"市").replace(/省03/g,"详细地址").replace(/foundedTime/g,"成立时间").replace(/operationstate/g,"运营状态")
+                        .replace(/schoolSystem/g,"学制").replace(/tuition01/g,"幼儿园学费").replace(/tuition02/g,"小学学费").replace(/tuition03/g,"初中学费").replace(/tuition04/g,"高中学费")
+                        .replace(/website/g,"官网").replace(/telephone/g,"电话").replace(/interCourseFoundedTime/g,"国际课程认证时间")
+                        .replace(/course/g,"国际课程").replace(/authentication/g,"认证").replace(/courseEvaluation/g,"外部考试与评估").replace(/studentNumAll/g,"总在校生（国际部）")
+                        .replace(/studentNum01/g,"幼儿园学生数").replace(/studentNum02/g,"小学学生数").replace(/studentNum03/g,"初中学生数").replace(/studentNum04/g,"高中学生数")
+                        .replace(/studentCapacity/g,"总容量（国际部").replace(/graduatedStuNum/g,"毕业班人数（国际部）").replace(/stuDominantNationality/g,"学生主要国籍")
+                        .replace(/stuYearInvestment/g,"生均年投入").replace(/clubNum/g,"俱乐部数量").replace(/staffNum/g,"总员工数量").replace(/presidentCountry/g,"校长/国际部主任国籍").replace(/presidentCountry/g,"校长/国际部主任国籍")
+                        .replace(/teacherNum/g,"总教师数量").replace(/foreignTeacherNum/g,"外籍教师数量").replace(/teacherYearInvestment/g,"师均年培训投入").replace(/teacherRetention/g,"教师流失率")
+                        .replace(/teacherSalary/g,"教师薪酬（三年经验）").replace(/teacherStuRatio/g,"师生比").replace(/coveredArea/g,"占地面积（亩）").replace(/builtArea/g,"建筑面积")
+                        .replace(/hardware/g,"硬件设施").replace(/investment/g,"投资信息").replace(/remark/g,"备注").replace(/loadPeople/g,"提交人").replace(/loadTime/g,"提交时间")
+                        .replace(/certificateAuthority/g,"主流学术保障认证机构").replace(/studentEvaluation/g,"学生评测").replace(/thirdOrganizations/g,"第三方组织机构").replace(/loadPeople/g,"课程")
                         console.log(JSON.parse(newData))
                         downloadExl(JSON.parse(newData))
                     }, function(){
