@@ -10,7 +10,7 @@ var changeUrl = { address:'data.xinxueshuo.cn:80/nsi-1.0',imgAddress:"data.xinxu
 var rightsControl ={
     "right01":['xuxinmo@xinxueshuo.cn','huangman@xinxueshuo.cn','qinqiaoyun@xinxueshuo.cn','info@xinxueshuo.cn','zhangwen@xinxueshuo.cn','zhangziyu@xinxueshuo.cn','zhangchao@xinxueshuo.cn','taozui@xinxueshuo.cn'],
     "right02":[],
-    "right03":['zhangwen@xinxueshuo.cn'],
-    "right04":['吴越','程静','test03@xinxueshuo.cn','chengjing@xinxueshuo.cn','wuyue@xinxueshuo.cn','liyan@xinxueshuo.cn','zhangshanlin@xinxueshuo.cn','dongyankun@xinxueshuo.cn','zhangwenjia@xinxueshuo.cn']
+    "right03":['zhangwen@xinxueshuo.cn','sunlihong@xinxueshuo.cn'],
+    "right04":['吴越','程静','chengjing@xinxueshuo.cn','wuyue@xinxueshuo.cn','liyan@xinxueshuo.cn','zhangshanlin@xinxueshuo.cn','dongyankun@xinxueshuo.cn','zhangwenjia@xinxueshuo.cn']
 }
   
